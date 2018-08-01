@@ -4,17 +4,12 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.util.jar.JarFile;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.ssca.format.Dex;
 import com.ssca.format.DexMethod;
 import com.ssca.utils.ApkUnZip;
 import com.ssca.utils.ByteUtils;
 
 public class DexMethodParser {
-
-	static Logger logger = LogManager.getLogger();
 
 	public static void getMethodInfo(JarFile jarFile, String dexName, Dex dex) throws IOException {
 		DataInputStream dis = ApkUnZip.getDexDataInputStreamWithBuffered(jarFile, dexName);
@@ -36,8 +31,7 @@ public class DexMethodParser {
 				dex.methodList.add(dexMethod);
 			}
 		} else {
-			// System.err.println();
-			logger.error("dis is null");
+			System.err.println("dis is null");
 		}
 	}
 }
